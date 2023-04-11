@@ -1,0 +1,156 @@
+/* .troubleDetail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 150px;
+}
+
+.troubleDetail .div_1 {
+  background-color: rgb(250, 225, 229);
+  align-content: center;
+  width: 1000px;
+  margin: 30px;
+  padding: 50px 0 50px 0;
+}
+
+.troubleDetail .div_1 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.troubleDetail .div_2 {
+  width: 1000px;
+}
+
+.troubleDetail .div_2 li {
+  padding-top: 5px;
+}
+
+.div_2 input,
+.div_2 textarea {
+  width: 1000px;
+  border: none;
+}
+
+.troubleDetail .div_2 li:nth-of-type(1) {
+  align-self: flex-start;
+  padding: 20px 0 5px 0;
+  border-top: 2px solid gray;
+}
+
+.troubleDetail .div_2 li:nth-of-type(2) {
+  align-self: flex-start;
+  font-size: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.troubleDetail .div_2 li:nth-of-type(3) {
+  margin: 20px 0px 50px 0px;
+}
+
+.troubleDetail .div_3 {
+  display: flex;
+  width: 1000px;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.troubleDetail .div_3 button {
+  font-weight: bold;
+  padding: 5px;
+} */
+
+.noticeDetail {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 30px;
+}
+
+.noticeDetail li {
+  padding: 5px;
+  border-bottom: 1px solid #dadada;
+}
+
+.noticeDetail .div_1 {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.noticeDetail .div_1 li {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: 20px;
+  padding-right: 30px;
+  font-size: medium;
+}
+
+.noticeDetail .div_1 li:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.noticeDetail .div_2 li {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: 20px;
+  font-size: medium;
+}
+
+.noticeDetail .div_1,
+.noticeDetail .div_2 {
+  border-top: 1px solid #dadada;
+}
+
+#id {
+  display: none;
+}
+
+/* 제목 */
+#title {
+  width: 800px;
+  border: none;
+  height: 20px;
+}
+
+/* 내용 */
+#content {
+  display: flex;
+  width: 1000px;
+  height: 100%;
+  /* padding: 20px; */
+}
+#content textarea {
+  width: 1000px;
+  border: none;
+}
+
+#content:focus,
+#content textarea:focus {
+  outline: none;
+}
+
+/* 파일선택 */
+#file {
+  height: 25px;
+}
+
+/* 등록, 취소 버튼 */
+.div_3 {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.div_3 button {
+  font-size: medium;
+  font-weight: bold;
+  padding: 5px;
+  width: 55px;
+  cursor: pointer;
+}
