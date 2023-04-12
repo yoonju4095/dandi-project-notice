@@ -70,11 +70,6 @@
           <h3>공지사항</h3>
         </div>
         <div class="search">
-<!--          <select class="" size="1">-->
-<!--            <option>선택</option>-->
-<!--            <option>제목</option>-->
-<!--            <option>내용</option>-->
-<!--          </select>-->
           <input type="text" placeholder="키워드를 입력해주세요">
           <button class="searchBtn">검색</button>
         </div>
@@ -85,10 +80,8 @@
           <table>
             <thead>
             <tr>
-              <!--            <th id="all">선택</th>-->
-              <th>ID</th>
+              <th>글번호</th>
               <th>제목</th>
-              <th>내용</th>
               <th>조회수</th>
               <th>날짜</th>
             </tr>
@@ -100,16 +93,14 @@
               <td >
                 <a href="" th:href="@{/notice/{id}/detail(id=${notice.id})}" th:text="${notice.title}"></a>
               </td>
-              <td th:text="${notice.content}">내용</td>
               <td th:text="${notice.hit}">조회수</td>
-              <td>작성일</td>
+              <td th:text="${notice.cDate}"></td>
 
             </tr>
             </tbody>
           </table>
         </form>
       </div>
-
 
       <div class="add">
         <button id="btnAdd" th:onclick="|location.href='@{/notice/add}'|">글쓰기</button>

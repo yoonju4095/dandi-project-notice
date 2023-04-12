@@ -77,7 +77,7 @@ public class NoticeController {
     detailForm.setTitle(notice.getTitle());
     detailForm.setContent(notice.getContent());
     detailForm.setHit(notice.getHit());
-//    detailForm.setCDate(notice.getCDate());
+    detailForm.setCDate(notice.getCDate());
 //    detailForm.setUDate(notice.getUDate());
 
     model.addAttribute("detailForm", detailForm);

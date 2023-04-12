@@ -57,7 +57,7 @@ public class NoticeDAOImpl implements NoticeDAO{
   @Override
   public Optional<Notice> findById(Long id) {
     StringBuffer sb = new StringBuffer();
-    sb.append("select id, title, content, hit ");
+    sb.append("select id, title, content, hit, cdate ");
     sb.append("  from notice ");
     sb.append(" where id = :id ");
 
@@ -117,7 +117,7 @@ public class NoticeDAOImpl implements NoticeDAO{
   public List<Notice> findAll() {
 
     StringBuffer sb = new StringBuffer();
-    sb.append("select id, title, content, hit ");
+    sb.append("select id, title, content, hit, cdate ");
     sb.append("  from notice ");
 
     List<Notice> list = template.query(

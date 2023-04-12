@@ -12,6 +12,6 @@ public class Notice {
   private String title;       // 제목
   private String content;    // 본문
   private int hit;           // 조회수
-  private Long cDate;         // 생성일시
+  private String cDate;         // 생성일시
   private Long uDate;         // 변경일시
 }
