@@ -119,6 +119,7 @@ public class NoticeDAOImpl implements NoticeDAO{
     StringBuffer sb = new StringBuffer();
     sb.append("select id, title, content, hit, cdate ");
     sb.append("  from notice ");
+    sb.append("  order by id DESC");
 
     List<Notice> list = template.query(
             sb.toString(),
@@ -155,16 +156,16 @@ public class NoticeDAOImpl implements NoticeDAO{
 
 
   //수동 매핑
-  private RowMapper<Notice> noticeRowMapper() {
-    return (rs, rowNum) -> {
-      Notice notice = new Notice();
-      notice.setId(rs.getLong("id"));
-      notice.setTitle(rs.getString("title"));
-      notice.setContent(rs.getString("content"));
+//  private RowMapper<Notice> noticeRowMapper() {
+//    return (rs, rowNum) -> {
+//      Notice notice = new Notice();
+//      notice.setId(rs.getLong("id"));
+//      notice.setTitle(rs.getString("title"));
+//      notice.setContent(rs.getString("content"));
 //      notice.setHit(rs.getLong("hit"));
 //      notice.setCDate(rs.getLong("cdate"));
 //      notice.setUDate(rs.getLong("udate"));
-      return notice;
-    };
-  }
+//      return notice;
+//    };
+//  }
 }

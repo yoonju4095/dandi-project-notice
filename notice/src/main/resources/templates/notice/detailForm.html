@@ -80,19 +80,17 @@
           </div>
 
           <div class="div_2">
+              <input type="text" readonly th:field="*{id}">
             <ul>
-              <li>
-                <input type="text" readonly th:field="*{hit}">
-              </li>
               <li>
                 <input type="text" id="title" readonly th:field="*{title}" placeholder="제목을 입력해주세요" maxlength="20">
               </li>
               <li id="content">
                 <textarea name="content" readonly th:field="*{content}" placeholder="내용을 입력해주세요" rows="30"></textarea>
               </li>
-              <li>
-                <input type="file" id="file" multiple>
-              </li>
+<!--              <li>-->
+<!--                <input type="file" id="file" multiple>-->
+<!--              </li>-->
             </ul>
           </div>
         </div>
