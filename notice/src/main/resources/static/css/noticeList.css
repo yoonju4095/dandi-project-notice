@@ -33,7 +33,6 @@
   width: 55px;
   padding: 5px;
   cursor: pointer;
-  border: none;
   /* background-color: #a9e7c3; */
 }
 
@@ -81,3 +80,37 @@ th {
   padding: 5px;
   cursor: pointer;
 }
+
+
+.noticePage{
+  display: flex;
+  justify-content: flex-end;
+  justify-content: center;
+  padding: 25px;
+}
+
+.noticePage a{
+display:block;
+	margin:0 3px;
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	background-color:#fff;
+	font-size:13px;
+	color:#999999;
+	text-decoration:none;
+}
+
+.noticePage a.active {
+	background-color:#93d6af;
+	color:#fff;
+	border:1px solid #93d6af;
+}
+
+.pageItem{
+  margin: 5px;
+}
+

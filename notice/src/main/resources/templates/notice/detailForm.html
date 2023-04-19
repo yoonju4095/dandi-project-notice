@@ -87,10 +87,12 @@
               </li>
               <li id="content">
                 <textarea name="content" readonly th:field="*{content}" placeholder="내용을 입력해주세요" rows="30"></textarea>
+                <div th:each="file : ${imagedFiles}" class="view__img">
+                  <th:block th:if="${#strings.contains(file.ftype,'image')}">
+                    <img th:src="@{|/attach/view/${file.rid}|}" >
+                  </th:block>
+                </div>
               </li>
-<!--              <li>-->
-<!--                <input type="file" id="file" multiple>-->
-<!--              </li>-->
             </ul>
           </div>
         </div>

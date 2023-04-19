@@ -1,4 +1,4 @@
-package com.kh.dandi.dao;
+package com.kh.dandi.domain.notice.dao;
 
 
 import lombok.RequiredArgsConstructor;
@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -14,8 +13,8 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.thymeleaf.util.StringUtils;
 
-import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -26,6 +25,8 @@ import java.util.Optional;
 public class NoticeDAOImpl implements NoticeDAO{
 
   private final NamedParameterJdbcTemplate template;
+
+  private final JdbcTemplate jdbcTemplate;
 
   /**
    * 등록
@@ -45,7 +46,6 @@ public class NoticeDAOImpl implements NoticeDAO{
     template.update(sb.toString(),param,keyHolder,new String[]{"id"});
 
     long id = keyHolder.getKey().longValue(); //상품아이디
-//    notice.setId(id);
 
     return id;
   }
@@ -84,18 +84,12 @@ public class NoticeDAOImpl implements NoticeDAO{
     sb.append("update notice ");
     sb.append("   set title = :title, ");
     sb.append("       content = :content ");
-//    sb.append("       hit = :hit");
-//    sb.append("       cdate = :cdate");
-//    sb.append("       udate = :udate");
     sb.append(" where id = :id ");
 
     SqlParameterSource param = new MapSqlParameterSource()
             .addValue("title", notice.getTitle())
             .addValue("content", notice.getContent())
             .addValue("id",id);
-//            .addValue("hit", notice.getHit())
-//            .addValue("cdate", notice.getCDate())
-//            .addValue("udate", notice.getUDate());
 
     return template.update(sb.toString(),param);
   }
@@ -129,6 +123,34 @@ public class NoticeDAOImpl implements NoticeDAO{
     return list;
   }
 
+
+  @Override
+  public List<Notice> findAllPaging(int startRec, int endRec) {
+    StringBuffer sql = new StringBuffer();
+    sql.append("select t1.* ");
+    sql.append("from( ");
+    sql.append("    SELECT ");
+    sql.append("  rownum no, ");
+    sql.append("  id, ");
+    sql.append("  title, ");
+    sql.append("  content, ");
+    sql.append("  hit, ");
+    sql.append("  cdate ");
+    sql.append("    FROM notice order by id DESC) t1 ");
+    sql.append("where no between :startRec and :endRec ");
+
+    Map<String, Integer> param = Map.of("startRec", startRec, "endRec", endRec);
+    List<Notice> listPaging = template.query(
+            sql.toString(),
+            param,
+            BeanPropertyRowMapper.newInstance(Notice.class)
+    );
+
+    return listPaging;
+  }
+
+
+
   /**
    * @return 조회수
    */
@@ -149,10 +171,49 @@ public class NoticeDAOImpl implements NoticeDAO{
     return affectedRows;
   }
 
+  //전체건수
   @Override
   public int totalCount() {
-    return 0;
+
+    String sql = "select count(*) from notice ";
+    MapSqlParameterSource params = new MapSqlParameterSource();
+    Integer cnt = template.queryForObject(sql, params, Integer.class);
+
+    return cnt;
   }
+
+//  @Override
+//  public int totalCount(String bcategory) {
+//
+//    String sql = "select count(*) from notice where t_category = :tcategory";
+//    MapSqlParameterSource params = new MapSqlParameterSource();
+//    params.addValue("tcategory", bcategory);
+//    Integer cnt = template.queryForObject(sql, params, Integer.class);
+//
+//    return cnt;
+//  }
+
+//  @Override
+//  public int totalCount(NoticeFilter noticeFilter) {
+//
+//    StringBuilder sql = new StringBuilder();
+//    sql.append("select count(*) from trouble_board ");
+//    if(!StringUtils.isEmpty(noticeFilter.getCategory())) {
+//      sql.append("where bcategory = :category ");
+//    }
+//    if(!StringUtils.isEmpty(noticeFilter.getSearchType())) {
+//      sql.append("and "+noticeFilter.getSearchType()+" like :keyword ");
+//    }
+//
+//    SqlParameterSource paramMap = new MapSqlParameterSource()
+//            .addValue("category", noticeFilter.getCategory())
+//            .addValue("keyword", "%"+noticeFilter.getKeyword()+"%");
+//
+//    Integer cnt = template.queryForObject(sql.toString(), paramMap, Integer.class);
+//
+//    return cnt;
+  }
+
 
 
   //수동 매핑
@@ -168,4 +229,4 @@ public class NoticeDAOImpl implements NoticeDAO{
 //      return notice;
 //    };
 //  }
-}
+//}

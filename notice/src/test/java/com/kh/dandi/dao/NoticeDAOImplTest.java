@@ -1,5 +1,7 @@
 package com.kh.dandi.dao;
 
+import com.kh.dandi.domain.notice.dao.Notice;
+import com.kh.dandi.domain.notice.dao.NoticeDAO;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Slf4j

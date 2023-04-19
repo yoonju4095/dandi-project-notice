@@ -1,4 +1,4 @@
-package com.kh.dandi.dao;
+package com.kh.dandi.domain.notice.dao;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,10 +21,15 @@ public interface NoticeDAO {
   // 공지 목록
   List<Notice> findAll();
 
+  List<Notice> findAllPaging(int startRec, int endRec);
+
   // 조회수 증가
   int updateHit(Long id);
 
   // 전체건수
   int totalCount();
+
+//  int totalCount(String tCategory);
+//  int totalCount(NoticeFilter troubleFilter);
 
 }

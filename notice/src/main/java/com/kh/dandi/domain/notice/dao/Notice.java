@@ -1,18 +1,16 @@
-package com.kh.dandi.web.form.notice;
+package com.kh.dandi.domain.notice.dao;
 
-import com.kh.dandi.domain.entity.UploadFile;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
+import lombok.NoArgsConstructor;
 
 @Data
-public class DetailForm {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Notice {
   private Long id;      // 공지아이디
   private String title;       // 제목
   private String content;    // 본문
   private int hit;           // 조회수
   private String cDate;         // 생성일시
-
-  private List<UploadFile> imagedFiles;
-
 }

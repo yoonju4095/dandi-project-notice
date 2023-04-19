@@ -67,7 +67,7 @@
   <!-- 공지사항 입력-->
   <div>
     <main>
-      <form id="frm" action="" method="post" th:object="${saveForm}">
+      <form id="frm" action="" method="post" th:object="${saveForm}" enctype="multipart/form-data">
         <div class="noticeAdd">
 
           <div class="div_1">
@@ -86,7 +86,7 @@
                 <textarea name="content" th:field="*{content}" placeholder="내용을 입력해주세요" rows="30"></textarea>
               </li>
               <li>
-                <input type="file" id="file" multiple>
+                <input type="file" id="file" th:field="*{imageFiles}" multiple>
               </li>
             </ul>
           </div>
