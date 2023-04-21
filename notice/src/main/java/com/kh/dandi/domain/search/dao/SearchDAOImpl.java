@@ -1,7 +1,6 @@
 package com.kh.dandi.domain.search.dao;
 
 import com.kh.dandi.domain.notice.dao.Notice;
-import com.kh.dandi.domain.troubleBoard.dao.Trouble;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -25,14 +24,12 @@ public class SearchDAOImpl implements SearchDAO {
   public List<Notice> searchWord(String keyword, int startRec, int endRec) {
     StringBuffer sql = new StringBuffer();
     sql.append(" select t2.* ");
-    sql.append(" from(select rownum no, t_id, ");
-    sql.append(" nickname, email, ");
-    sql.append(" t_category, contract, wage, ");
-    sql.append(" won, hours, month, year, ");
-    sql.append(" title, t_content, hit, cdate ");
-    sql.append(" from trouble_board ");
+    sql.append(" from(select rownum no, id, ");
+    sql.append(" title, content, ");
+    sql.append(" hit, cdate ");
+    sql.append(" from notice ");
     sql.append(" where title like '%'||:keyword||'%'");
-    sql.append(" order by t_id DESC) t2 ");
+    sql.append(" order by id DESC) t2 ");
     sql.append(" where no between :startRec and :endRec ");
 
     try {

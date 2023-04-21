@@ -7,7 +7,7 @@
   <meta name="description" content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바">
   <meta name="keywords" content="dandi">
   <meta name="author" content="4팀">
-  <title>공지 목록</title>
+  <title>검색결과</title>
   <link rel="stylesheet" href="/css/common.css">
   <link rel="stylesheet" href="/css/noticeList.css">
   <link rel="stylesheet"
@@ -62,16 +62,19 @@
       </div>
     </ul>
   </nav>
-  <!-- 고민게시판 목록-->
+  <!-- 공지사항 검색결과-->
   <div>
     <main>
       <div class="div_1">
         <div class="notice">
-          <h3>공지사항</h3>
+          <h3>공지사항 검색결과</h3>
         </div>
         <div class="search">
-          <input type="text" placeholder="키워드를 입력해주세요">
-          <button class="searchBtn" th:onclick="">검색</button>
+          <input
+                  type="search"
+                  class="textSearch"
+          />
+          <button type="button" class="searchBtn">검색</button>
         </div>
       </div>
 
@@ -179,5 +182,30 @@
   <div class="sp10"></div>
 
 </div>
+<script>
+      const $textSearch = document.querySelector(".textSearch");
+      const $searchBtn = document.querySelector(".searchBtn");
+
+      const search_h = (e) => {
+        if (e.key === "Enter") {
+          if ($textSearch.value === "") {
+            alert("검색어를 입력해주세요.");
+          } else {
+            globalThis.location.href = `/searches/${$textSearch.value}`;
+            $textSearch.value = "";
+          }
+        }
+      };
+      $textSearch.addEventListener("keyup", search_h);
+      $searchBtn.addEventListener("click", (e) => {
+        if ($textSearch.value === "") {
+          alert("검색어를 입력해주세요.");
+          return;
+        } else {
+          globalThis.location.href = `/searches/${$textSearch.value}`;
+          $textSearch.value = "";
+        }
+      });
+    </script>
 </body>
 </html>

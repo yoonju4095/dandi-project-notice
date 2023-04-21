@@ -4,10 +4,7 @@ import com.kh.dandi.domain.common.paging.FindCriteria;
 import com.kh.dandi.domain.notice.dao.Notice;
 import com.kh.dandi.domain.notice.svc.NoticeSVC;
 import com.kh.dandi.domain.search.svc.SearchSVC;
-import com.kh.dandi.domain.troubleBoard.dao.Trouble;
-import com.kh.dandi.domain.troubleBoard.svc.TroubleSVC;
 import com.kh.dandi.web.form.notice.ListForm;
-import com.kh.dandi.web.form.trouble.ListForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -54,7 +51,7 @@ public class SearchController {
       BeanUtils.copyProperties(notice, listForm);
       partOfList.add(listForm);
     }
-    model.addAttribute("troubleLists", partOfList);
+    model.addAttribute("noticeLists", partOfList);
     model.addAttribute("fc", fc);
     model.addAttribute("searchWords", searchWords);
 

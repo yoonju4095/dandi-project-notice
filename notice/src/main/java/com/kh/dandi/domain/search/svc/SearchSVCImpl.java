@@ -2,7 +2,6 @@ package com.kh.dandi.domain.search.svc;
 
 import com.kh.dandi.domain.notice.dao.Notice;
 import com.kh.dandi.domain.search.dao.SearchDAO;
-import com.kh.dandi.domain.troubleBoard.dao.Trouble;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package com.kh.dandi.domain.search.dao;
 
 import com.kh.dandi.domain.notice.dao.Notice;
-import com.kh.dandi.domain.troubleBoard.dao.Trouble;
 
 import java.util.List;
 

@@ -70,8 +70,15 @@
           <h3>공지사항</h3>
         </div>
         <div class="search">
-          <input type="text" placeholder="키워드를 입력해주세요">
-          <button class="searchBtn" th:onclick="">검색</button>
+<!--          <input type="text" placeholder="키워드를 입력해주세요">-->
+<!--          <button class="searchBtn" th:onclick="">검색</button>-->
+          <input
+                  type="search"
+                  class="textSearch"
+                  placeholder="키워드를 입력해주세요"
+                  th:value="${searchWords}"
+          />
+          <button type="button" class="searchBtn">검색</button>
         </div>
       </div>
 
@@ -88,7 +95,6 @@
             </thead>
             <tbody>
             <tr th:each="notice : ${noticeLists}">
-              <!--            <th><input type="checkbox" name="chk" th:value="${notice.id}"></th>-->
               <td th:text="${notice.id}">ID</td>
               <td >
                 <a href="" th:href="@{/notice/{id}/detail(id=${notice.id})}" th:text="${notice.title}"></a>
@@ -179,5 +185,31 @@
   <div class="sp10"></div>
 
 </div>
+
+<script>
+      const $textSearch = document.querySelector(".textSearch");
+      const $searchBtn = document.querySelector(".searchBtn");
+
+      const search_h = (e) => {
+        if (e.key === "Enter") {
+          if ($textSearch.value === "") {
+            alert("검색어를 입력해주세요.");
+          } else {
+            globalThis.location.href = `/searches/${$textSearch.value}`;
+            $textSearch.value = "";
+          }
+        }
+      };
+      $textSearch.addEventListener("keyup", search_h);
+      $searchBtn.addEventListener("click", (e) => {
+        if ($textSearch.value === "") {
+          alert("검색어를 입력해주세요.");
+          return;
+        } else {
+          globalThis.location.href = `/searches/${$textSearch.value}`;
+          $textSearch.value = "";
+        }
+      });
+    </script>
 </body>
 </html>
